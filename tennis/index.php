@@ -1,4 +1,5 @@
 <?php 
+  include 'includes/login.php';
   $fp = fopen ("info-2.txt", "r"); //ファイルを開く
 ?>
 <html>
@@ -8,8 +9,12 @@
 </head>
 <body>
     <h1>テニスサークル交流サイト</h1>
-    <p><a href="album.php">アルバム</a></p>
-    <p><a href="bbs.php">掲示板</a></p>
+    <h2>メニュー</h2>
+    <p>
+        <a href="album.php">アルバム</a>
+        <a href="bbs.php">掲示板</a>
+        <a href="logout.php">ログアウト</a>
+    </p>
     <h2>お知らせ</h2>
     <?php
       //ファイルが正しく開けたとき

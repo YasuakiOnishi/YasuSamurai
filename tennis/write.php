@@ -1,9 +1,11 @@
 <?php
+    include 'includes/login.php';
 //データの受け取り
   $name = $_POST['name'];
   $title = $_POST['title'];
   $body = $_POST['body'];
   $pass = $_POST['pass'];
+  $token = $_POST['token'];
 
   //必須項目チェック(名前か本文がからではないか？)
   if ($name == '' || $body == ''){
@@ -15,7 +17,13 @@
       header('location: bbs.ph');
       exit();
   }
-
+  //CSRF対策：トークンが正しいかどうか
+  if ($token != sha1(session_id())){
+    header('Location: bbs.php');
+    exit();
+  }
+  //名前をクッキーにセット
+  setcookie('name', $name, time() + 60 * 60 * 24 * 30);
   //データベースに接続
   $dsn = 'mysql:host=localhost;dbname=tennis;charset=utf8';
   $user = 'tennisuser';
