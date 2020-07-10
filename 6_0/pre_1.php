@@ -3,6 +3,7 @@
   $class1 = array("はるき", "かおる", "はじめ");
   $class2 = array("やすあき", "ひかる");
   $students = array($class1, $class2);
+  print_r($array);
 
   $result = array(
       "数学" => 90,
